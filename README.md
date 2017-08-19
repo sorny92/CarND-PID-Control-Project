@@ -15,6 +15,8 @@ I also decrease the Kp when the speed increase so I can avoid overshooting in fa
    
 With this simple control I can achieve around 60mph safetely, 70mph can be achieved with a bit of tunning but depending of the angle when the car enters in the turn after the bridge, it sometimes goes off the road.
 
+Note: You can find a video in the ROOT folder that shows 2 laps around the circuit.
+
 ---
 
 ## Dependencies
