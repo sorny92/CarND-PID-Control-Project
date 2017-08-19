@@ -11,8 +11,10 @@ I firstly tuned for constant throttle (0.3) and a simple PD controller with a P 
 But we want to have fun at higher speeds, I tried to tune for faster speeds but you have a problem, you can't really predict the curvature of the turns ahead. When the CTE starts to increase you need a high P to avoid going out of the road, but that means an inestable system in straight lines. 
 What I did to solve the problem is create a pseudo control in the throttle. Based on the steering angle I increase or decrease the throttle, so in turns I can go slower and have more "frames" to react to the turn.
 I also decrease the Kp when the speed increase so I can avoid overshooting in fast turns or straight lines. 
-
+   
+   
 With this simple control I can achieve around 60mph safetely, 70mph can be achieved with a bit of tunning but depending of the angle when the car enters in the turn after the bridge, it sometimes goes off the road.
+
 ---
 
 ## Dependencies
