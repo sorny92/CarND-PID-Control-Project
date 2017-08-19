@@ -55,9 +55,9 @@ int main()
           pid_steer.UpdateError(cte);
           steer_value = pid_steer.TotalError(speed);
           if(steer_value < 0)
-            throttle = 1 + 1.2*steer_value;
+            throttle = 0.6 + 0.7*steer_value;
           else
-            throttle = 1 - 1.2*steer_value;
+            throttle = 0.6 - 0.7*steer_value;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
