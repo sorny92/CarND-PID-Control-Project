@@ -15,9 +15,16 @@ public:
   virtual ~PID();
 
   /*
+  * Coefficients
+  */ 
+  double Kp;
+  double Ki;
+  double Kd;
+
+  /*
   * Initialize PID.
   */
-  void Init(double Kp, double Ki, double Kd);
+  void Init(double K_p, double K_i, double K_d);
 
   /*
   * Update the PID error variables given cross track error.
@@ -27,7 +34,7 @@ public:
   /*
   * Calculate the total PID error.
   */
-  double TotalError();
+  double TotalError(double speed);
 private:
     /*
   * Errors
@@ -36,13 +43,6 @@ private:
   double i_error;
   double d_error;
   double previous_error;
-
-  /*
-  * Coefficients
-  */ 
-  double Kp;
-  double Ki;
-  double Kd;
 };
 
 #endif /* PID_H */

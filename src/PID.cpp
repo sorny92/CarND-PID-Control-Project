@@ -10,10 +10,10 @@ PID::PID() {}
 
 PID::~PID() {}
 
-void PID::Init(double Kp, double Ki, double Kd) {
-	Kp = Kp;
-	Ki = Ki;
-	Kd = Kd;
+void PID::Init(double K_p, double K_i, double K_d) {
+	Kp = K_p;
+	Ki = K_i;
+	Kd = K_d;
 	p_error = 0;
 	i_error = 0;
 	d_error = 0;
@@ -21,12 +21,18 @@ void PID::Init(double Kp, double Ki, double Kd) {
 }
 
 void PID::UpdateError(double cte) {
+	//CTE is [-4,4] aproximately to be inside the road
 	p_error = cte;
 	d_error = cte - previous_error;
 	i_error += cte;
 	previous_error = cte;
 }
 
-double PID::TotalError() {
-	return (Kp*p_error + Ki*i_error + Kd*d_error);
+double PID::TotalError(double speed) {
+	if(speed < 1) speed = 1;
+	double aux_Kp= Kp*30/speed;
+//	if (p_error > 1 || p_error < 1)
+//		aux_Kp += 0.035*p_error;
+	double steering = (-aux_Kp*p_error - Ki*i_error - Kd*d_error);
+	return steering;
 }
