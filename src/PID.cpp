@@ -32,8 +32,10 @@ double PID::TotalError(double speed) {
 	if(speed < 1) speed = 1;
 	double aux_Kp= Kp*40/speed;
 	double aux_Kd= Kd*speed/30;
-//	if (p_error > 1 || p_error < 1)
-//		aux_Kp += 0.035*p_error;
 	double steering = (-aux_Kp*p_error - Ki*i_error - Kd*d_error);
+	if (steering < -1)
+		steering = -1;
+	else if (steering > 1)
+		steering = 1;
 	return steering;
 }

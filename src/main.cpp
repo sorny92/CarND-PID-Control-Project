@@ -54,16 +54,10 @@ int main()
           double throttle = 0.5;
           pid_steer.UpdateError(cte);
           steer_value = pid_steer.TotalError(speed);
-          if(steer_value < 0)
+          if(steer_value < 0 && speed > 20)
             throttle = 0.6 + 0.7*steer_value;
           else
             throttle = 0.6 - 0.7*steer_value;
-          /*
-          * TODO: Calcuate steering value here, remember the steering value is
-          * [-1, 1].
-          * NOTE: Feel free to play around with the throttle and speed. Maybe use
-          * another PID controller to control the speed!
-          */
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
